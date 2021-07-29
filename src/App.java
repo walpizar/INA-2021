@@ -30,7 +30,7 @@ public class App {
         String nombre="HOLA";
         int[][] matriz = {{6,3,5},{4,5,6}};
         int[] vector = {1,2,3};
-*/
+        */
 
 
         //int num1=0 , num2=0;
@@ -39,6 +39,7 @@ public class App {
         int num1=0;
         int num2=0;
         int suma=0;
+        String nombre= "";
 
         System.out.print("Digite el numero 1 :");
         num1=scan.nextInt();
@@ -50,6 +51,19 @@ public class App {
 
         System.out.println("El resultado es:"+suma);
         JOptionPane.showMessageDialog(null, suma);
+
+        nombre= JOptionPane.showInputDialog(null, "Digite el nombre de la persona");
+
+
+        System.out.println("EL nombre es: "+ nombre + " sumó: "+ suma);
+        JOptionPane.showMessageDialog(null,"EL nombre es: "+ nombre + " sumó: "+ suma);
+
+
+
+
+
+
+
 
 
 /*
