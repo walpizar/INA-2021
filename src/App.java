@@ -18,6 +18,8 @@ public class App {
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {
+        
+        //CAPUTAR DATOS ATRAVEZ DE LA CONSOLA, CREO LA INSTANCIA DE SCANNER
         Scanner scan= new Scanner(System.in);
         //declaracion de variable        
         
@@ -50,7 +52,7 @@ public class App {
 
 
         System.out.println("El resultado es:"+suma);
-        JOptionPane.showMessageDialog(null, suma);
+        JOptionPane.showMessageDialog(null, "El resultado es:"+suma);
 
         nombre= JOptionPane.showInputDialog(null, "Digite el nombre de la persona");
 
