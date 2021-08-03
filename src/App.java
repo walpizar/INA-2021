@@ -60,6 +60,7 @@ public class App {
         System.out.println("EL nombre es: "+ nombre + " sumó: "+ suma);
         JOptionPane.showMessageDialog(null,"EL nombre es: "+ nombre + " sumó: "+ suma);
 
+        
 
 
 
