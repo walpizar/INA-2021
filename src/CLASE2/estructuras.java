@@ -9,7 +9,8 @@ public class estructuras {
         // if- switch- for- while- do while
 
         Scanner scan= new Scanner(System.in);
-/*
+
+        /*
         System.out.print("Digite una edad: ");
         int edad= scan.nextInt();
         //booleanbo como resultado
@@ -141,23 +142,7 @@ public class estructuras {
 
         }while(y>=1);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+         
 
 
     }
