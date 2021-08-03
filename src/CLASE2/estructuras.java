@@ -70,10 +70,8 @@ public class estructuras {
                 break;
 
             default:
+
                 System.out.println("no existe la opcion dentro del menu");
-
-
-
         } 
         
     
@@ -143,6 +141,7 @@ public class estructuras {
         }while(y>=1);
 
          
+        //comentario alfonso
 
 
     }
