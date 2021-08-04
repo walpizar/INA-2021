@@ -24,6 +24,9 @@ public class estructuras {
             System.out.println("ES MENOR DE EDAD");
         }
 
+
+
+
        
         //1 UNA SENTECIA
         if(edad>=18)
@@ -104,16 +107,34 @@ public class estructuras {
         //i=i+1 == i++  
         //i=i-1 i--
 
+      /*  if(true){
+            if(true){
+
+            }else if(true){
+                
+            }
+
+        }else if(false){
+
+        }else if(true){
+
+        }else if(true){
+
+        }else{
+
+        }*/
+
+
         for (int i=0; i< 10; i++ ){
             System.out.println(i);
+            caminar();
 
         }
 
         //AUMENTOS Y DECREMENTO
-
+        // x=x+1;
         int x=0;
         System.out.println("incremento x++: "+ x++);
-
         System.out.println("incremento x++: "+ x);
 
 
@@ -132,6 +153,7 @@ public class estructuras {
             y++;
 
         }
+
         //do while repite condicion verdadera
         System.out.println("do while");
         do{
@@ -140,9 +162,16 @@ public class estructuras {
 
         }while(y>=1);
 
-         
+                 
         //comentario alfonso
 
+
+    }
+
+
+    public static void caminar(){
+
+        System.out.println("estoy caminando...");
 
     }
     

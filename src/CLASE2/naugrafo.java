@@ -50,9 +50,7 @@ public class naugrafo {
         }
 */
         pagar= tipoHamb==1 ? 20 : tipoHamb== 2 ? 25 : 28;
-
         pagar= pagar*cantidad;
-
 
         do{
             if(tipoPago<1 || tipoPago>2){
@@ -61,7 +59,6 @@ public class naugrafo {
             System.out.print("Digite el tipo de pago: 1.Efectivo 2. Tarjeta: ");
             tipoPago=scan.nextShort();
         }while(tipoPago<1 || tipoPago>2);
-
 
         if(tipoPago==2){
 
