@@ -38,14 +38,6 @@ public class arrays {
 
 
 
-
-
-
-
-
-
-
-
     }
     
 }
