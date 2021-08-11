@@ -1,5 +1,8 @@
 package ahorcado;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -14,9 +17,11 @@ public class index {
         
         //inbstancia del venctor palabras con las palabras del juego
        
-        String palabaras[]={"Casa","Mariposa","Perro","Estadio","Estudio","Pintar"}, palabraSelected="";
+        String palabaras[], palabraSelected="";
         char juego[];
         char letra;    
+
+        palabaras= leerArchivo();
 
 
         //obtenerPalabra
@@ -58,8 +63,9 @@ public class index {
 
         } while (aciertos!=juego.length && errores!=7);
 
+
         //imprimirResultadoFinal
-        imprimirResultadoFinal(juego);
+        imprimirResultadoFinal(juego, palabraSelected);
         
     }
 
@@ -139,16 +145,51 @@ public class index {
 
     }
 
-    private static void imprimirResultadoFinal(char[] juego){
+    private static void imprimirResultadoFinal(char[] juego, String palabra){
 
         if(aciertos==juego.length){
             System.out.println("USTED HA GANADO");
         }
         if(errores==7){
-            System.out.println("HA QUEDADO AHORCADO...");
+            
+            System.out.println("HA QUEDADO AHORCADO..."+ "La palabra es: "+ palabra);
         }      
 
     }
-    
+
+    private static String [] leerArchivo(){
+
+        String [] palabras = null;
+       try {        
+         
+            short conta=0;
+            String linea="";
+
+            File archivo= new File("C://ina/palabras.txt");
+            FileReader fr = new FileReader(archivo);
+            BufferedReader br= new BufferedReader(fr);
+
+            while ((linea= br.readLine())!=null) {
+                conta++;                
+            }
+            palabras= new String [conta];
+
+            fr = new FileReader(archivo);
+            br= new BufferedReader(fr);
+        
+            conta=0;
+            while ((linea= br.readLine())!=null) {
+                palabras[conta]= linea;
+                conta++;               
+            }
+
+       } catch (Exception e) {
+           System.out.println(e);
+           //TODO: handle exception
+       }
+       
+       return palabras; 
+
+    }
     
 }
