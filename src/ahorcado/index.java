@@ -14,6 +14,9 @@ public class index {
     //GLOBAL VARIABLES
     static boolean bandera=false;
     static short aciertos=0, errores=0;
+
+    static Scanner scan = new Scanner(System.in);
+
     public static void main(String[] args) {
 
         
@@ -21,56 +24,95 @@ public class index {
        
         String palabaras[], palabraSelected="";
         char juego[];
-        char letra;  
+        char letra;    
+        char seguir;   
+      
         
-      
+        //puede volver a jugar.
+        //con las palabras que no ha salido. Gastando palabras
+        //en caso de no existir palabra terminar el juego e indicar el mensaje respectivo.
 
-        palabaras= leerArchivo();
-        escribirLineaArchivo(palabaras);
-
-        //obtenerPalabra
-        //random para obtener la palabara
-      
-        palabraSelected= obtenerPalabra(palabaras);
-        //palabraSelected= palabraSelected.toUpperCase();
-
-        //obtnerVectorJuego
-        //instacia del venctor juego con el tamaño de la palabra seleccionada
-        juego=  obtenerVectorJuego(palabraSelected);
-
-        /*//1 manera apata de llenar el vector juego con la palabra seleccinada
-        for(int i=0; i<palabraSelected.length(); i++){
-
-            juego[i]=palabraSelected.charAt(i);
-
-        }
-        */
-
-        //segunda manera
-     
-        System.out.println("BIENVENIDO AL JUEGO DEL AHORCADO..");    
 
         do {
-
+            aciertos=0; errores=0;
             bandera=false;
-            //imprimirJuego
-            imprimirJuego(palabraSelected, juego);
 
-            letra = solicitarLetra();
-
-            //validarLetra
-            validarLetra(letra, juego);
+            palabaras= leerArchivo();
             
-            //imprimirResultado
-            imprimirResultado();
+            if(palabaras.length==0){
+                System.out.println("No se puede jugar porque no hay palabras");
+                break;            
+            }
 
-
-        } while (aciertos!=juego.length && errores!=7);
-
-
-        //imprimirResultadoFinal
-        imprimirResultadoFinal(juego, palabraSelected);
         
+         
+           String nombre= palabaras[0].substring(0,18).trim().toUpperCase();
+
+            String pa= String.format("%1$-20s", "walter");
+            System.out.println(pa.length());
+
+            // escribirLineaArchivo(palabaras);
+     
+             //obtenerPalabra
+             //random para obtener la palabara
+           
+             palabraSelected= obtenerPalabra(palabaras);
+             //palabraSelected= palabraSelected.toUpperCase();
+     
+             //obtnerVectorJuego
+             //instacia del venctor juego con el tamaño de la palabra seleccionada
+             juego=  obtenerVectorJuego(palabraSelected);
+     
+             /*//1 manera apata de llenar el vector juego con la palabra seleccinada
+             for(int i=0; i<palabraSelected.length(); i++){
+     
+                 juego[i]=palabraSelected.charAt(i);
+     
+             }
+             */
+     
+             //segunda manera
+
+            /* if(!palabraSelected.equals("fdd")){
+
+
+             }*/
+          
+             System.out.println("BIENVENIDO AL JUEGO DEL AHORCADO..");    
+     
+             do {
+     
+                 bandera=false;
+                 //imprimirJuego
+                 imprimirJuego(palabraSelected, juego);
+     
+                 letra = solicitarLetra();
+     
+                 //validarLetra
+                 validarLetra(letra, juego);
+                 
+                 //imprimirResultado
+                 imprimirResultado();
+     
+     
+             } while (aciertos!=juego.length && errores!=7);
+     
+     
+             //imprimirResultadoFinal
+             imprimirResultadoFinal(juego, palabraSelected);
+
+
+
+             System.out.println("Desea volver a jugar(S/N)? ");   
+             seguir= scan.next().toUpperCase().charAt(0);
+             
+             eliminarPalabraArchivo(palabraSelected, palabaras);
+             
+
+
+
+
+        } while (seguir=='S');
     }
 
     //CREAR METODOS: UN TROZO DE CODIGO DE UNA FUNCIONALIDAD ESPECIFICA......
@@ -85,6 +127,23 @@ public class index {
     // el identificador del metodo. LE NOMBRE. Verbo en infinitivo caminar, comer, nadar
     //paramtros. la diferencia entre una variable y un metodo; Es el insumo que utliza el metodo para realizar la accion
     
+   
+
+    private static void eliminarPalabraArchivo(String palabraSelected, String[] palabaras) {
+        String [] palabrasAux= new String[palabaras.length-1];
+
+        short conta=0;
+
+        for (int i = 0; i < palabaras.length; i++) {
+            if(!palabaras[i].toUpperCase().trim().equals(palabraSelected.toUpperCase().trim())){
+                palabrasAux[conta]=palabaras[i]; 
+                conta++;
+            }
+        }
+
+        escribirLineaArchivo(palabrasAux);
+    }
+
     private static String obtenerPalabra(String palabras[]){
         Random ran= new Random();
        // String pala=  palabras[ran.nextInt(palabras.length)].toUpperCase();
@@ -115,7 +174,7 @@ public class index {
     }
 
     private static char solicitarLetra(){
-        Scanner scan = new Scanner(System.in);
+      
 
         System.out.println("");
         System.out.print("Digite un letra: ");
@@ -162,15 +221,21 @@ public class index {
     }
 
     private static String [] leerArchivo(){
-
     
        String [] palabras = null;
+       //ArrayList lista = new ArrayList<>();
        try {        
          
             short conta=0;
             String linea="";
-
+        
             File archivo= new File("C://ina/palabras.txt");
+            //verifica si no existe
+            if(!archivo.exists()){
+                //lo crea
+                archivo.createNewFile();
+            }
+
             FileReader fr = new FileReader(archivo);
             BufferedReader br= new BufferedReader(fr);
 
@@ -186,7 +251,7 @@ public class index {
         
             conta=0;
             while ((linea= br.readLine())!=null) {
-                palabras[conta]= linea;
+                palabras[conta]= linea;            
                 conta++;               
             }
 
@@ -198,6 +263,12 @@ public class index {
        return palabras; 
 
     }
+    public static String padRight(String s, int n) 
+    { 
+        return String.format("%1$-" + n + "s", s); 
+    }
+
+
     
 
     private static void escribirLineaArchivo(String []lineas){
@@ -205,7 +276,17 @@ public class index {
         FileWriter fichero= null;
         try {
             
-            fichero= new FileWriter("C://ina/palabras.txt");
+            String ruta= "C://ina/palabras.txt";           
+            
+            File archivo= new File(ruta);
+            //verifica si no existe
+            if(!archivo.exists()){
+                //lo crea
+                archivo.createNewFile();
+            }
+            
+            fichero= new FileWriter(ruta);
+
             PrintWriter pw = new PrintWriter(fichero);
 
             for (int i = 0; i < lineas.length; i++) {
