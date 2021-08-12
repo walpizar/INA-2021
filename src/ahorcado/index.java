@@ -3,6 +3,8 @@ package ahorcado;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -15,14 +17,16 @@ public class index {
     public static void main(String[] args) {
 
         
-        //inbstancia del venctor palabras con las palabras del juego
+        //instancia del venctor palabras con las palabras del juego
        
         String palabaras[], palabraSelected="";
         char juego[];
-        char letra;    
+        char letra;  
+        
+      
 
         palabaras= leerArchivo();
-
+        escribirLineaArchivo(palabaras);
 
         //obtenerPalabra
         //random para obtener la palabara
@@ -159,7 +163,8 @@ public class index {
 
     private static String [] leerArchivo(){
 
-        String [] palabras = null;
+    
+       String [] palabras = null;
        try {        
          
             short conta=0;
@@ -169,9 +174,11 @@ public class index {
             FileReader fr = new FileReader(archivo);
             BufferedReader br= new BufferedReader(fr);
 
+            
             while ((linea= br.readLine())!=null) {
                 conta++;                
             }
+
             palabras= new String [conta];
 
             fr = new FileReader(archivo);
@@ -192,4 +199,34 @@ public class index {
 
     }
     
+
+    private static void escribirLineaArchivo(String []lineas){
+
+        FileWriter fichero= null;
+        try {
+            
+            fichero= new FileWriter("C://ina/palabras.txt");
+            PrintWriter pw = new PrintWriter(fichero);
+
+            for (int i = 0; i < lineas.length; i++) {
+                pw.println(lineas[i]);
+            }
+
+        } catch (Exception e) {
+            //TODO: handle exception
+        }
+        finally{
+        
+            try {
+                if(fichero!=null){
+                    fichero.close();    
+                }
+
+            } catch (Exception e) {
+                //TODO: handle exception
+            }          
+
+        }
+
+    }
 }
