@@ -73,9 +73,7 @@ public class index {
             if(bolitasAcertadas[i]!=null){
                 System.out.print(bolitasAcertadas[i]+" ");
 
-            }
-            
-            
+            }   
         }
     }
 
@@ -86,9 +84,7 @@ public class index {
         for (int i = 0; i < bolitasJugadas.length; i++) {
            if(bolitasJugadas[i]!=null){
             System.out.print(bolitasJugadas[i]+" ");
-           }
-           
-            
+           }  
         }
     }
 
@@ -127,12 +123,9 @@ public class index {
                 default:
                     break;
             }
-        }
+        }     
 
-      
-
-        return gano;     
-
+        return gano; 
         
     }
 
