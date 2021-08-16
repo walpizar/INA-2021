@@ -1,11 +1,7 @@
 package BINGO;
-
-import java.util.Random;
 import java.util.Scanner;
 
-import javax.print.attribute.standard.NumberUpSupported;
 
-import jdk.javadoc.doclet.Reporter;
 
 public class index {
     public static void main(String[] args) {
@@ -57,10 +53,7 @@ public class index {
         imprimirCarton(bingo);
         imprimirJugadas(bolitasJugadas);
         imprimirAcertadas(bolitasAcertadas); 
-        System.out.println("");  
-    
-    
-    
+        System.out.println("");
     }
 
 
