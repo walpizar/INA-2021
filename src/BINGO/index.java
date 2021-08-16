@@ -38,12 +38,13 @@ public class index {
             System.out.println("CAYÓ BOLITA: "+ bolita);
 
             //validarB
-            gane = validarBolitaGaneCarton(bolita, bingo, tipoGane, bolitasAcertadas);
-
+            gane = validarBolitaGaneCarton(bolita, bingo, tipoGane, bolitasAcertadas)
+            
+            if(gane){
+                System.out.println("BINGOOOOOOO.... BINGOOOOO...");
+            }
             
         } while (!gane);
-
-
         
     }
 
@@ -80,10 +81,6 @@ public class index {
            }  
         }
     }
-
-
-   
-
 
     private static boolean validarBolitaGaneCarton(String bolita, String[][] bingo, int tipoGane, String [] bolitasAcertadas) {
 
@@ -150,16 +147,6 @@ public class index {
         }
 
     }
-/*
-    private static void agregarBolitaAcertada(String bolita, String[] bolitasAcertadas) {
-        for (int i = 0; i < bolitasAcertadas.length; i++) {
-            if(bolitasAcertadas[i]==null){
-                bolitasAcertadas[i]=bolita;
-                break;
-            }            
-        }
-    }
-*/
 
     private static boolean validarColumna(String[][] bingo) {
         boolean gano=false;
@@ -333,7 +320,6 @@ public class index {
 
     private static String obternerNumeroAleaterios(){
         return  Integer.toString((int)(Math.random() *50+1)); 
-
     } 
 
 
